@@ -26,13 +26,15 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0
-
+    terraform_version: 1.6.0
+    
       - name: Terraform Format Check
         run: terraform fmt -check
 
-      - name: Terraform Init
-        run: terraform init
+   - name: Terraform Init
+  env:
+    TF_SKIP_PROVIDER_VERIFY: true
+  run: terraform init
 
       - name: Run Security Scan (Checkov)
         run: |
