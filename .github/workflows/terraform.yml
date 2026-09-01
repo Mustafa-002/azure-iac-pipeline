@@ -34,7 +34,7 @@ jobs:
         run: terraform init
 
       - name: Run Security Scan (Checkov)
-        Name: Pull & Run Checkov Security Scanner
+        name: Pull & Run Checkov Security Scanner
         run: |
           docker run --rm -v $(pwd):/tf bridgecrew/checkov --directory /tf --soft-fail
 
