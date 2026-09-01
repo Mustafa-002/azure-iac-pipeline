@@ -40,9 +40,13 @@ jobs:
         run: |
           docker run --rm -v $(pwd):/tf bridgecrew/checkov --directory /tf --soft-fail
 
-      - name: Terraform Plan
+     - name: Terraform Plan
+        env:
+          TF_SKIP_PROVIDER_VERIFY: true
         run: terraform plan -no-color
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          TF_SKIP_PROVIDER_VERIFY: true
         run: terraform apply -auto-approve
