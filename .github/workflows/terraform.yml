@@ -1,4 +1,4 @@
-Name: "Terraform Azure IaC Pipeline"
+name: "Terraform Azure IaC Pipeline"
 
 on:
   push:
@@ -34,7 +34,6 @@ jobs:
         run: terraform init
 
       - name: Run Security Scan (Checkov)
-        Name: Pull & Run Checkov Security Scanner
         run: |
           docker run --rm -v $(pwd):/tf bridgecrew/checkov --directory /tf --soft-fail
 
