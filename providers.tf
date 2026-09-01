@@ -1,11 +1,13 @@
 terraform {
+  required_version = ">= 1.5.0"  # ← This line is missing!
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 4.0"  # Use latest compatible 4.x
+      version = "~> 4.0"
     }
   }
 }
+
 provider "azurerm" {
   features {}
 }
